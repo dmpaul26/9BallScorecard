@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vms="clr-namespace:_9BallScorecard.ViewModels"
+             x:Class="_9BallScorecard.MainPage">
+    <ContentPage.BindingContext>
+        <vms:NineBallViewModel />
+    </ContentPage.BindingContext>
+    <StackLayout Orientation="Vertical">
+        <HorizontalStackLayout HorizontalOptions="CenterAndExpand"
+                               Spacing="30">
+            <VerticalStackLayout>
+                <Label
+                    Text="{Binding PlayerOneName}"
+                    FontSize="32" />
+                <Label
+                    Text="{Binding PlayerOneScore}"
+                    FontSize="32" 
+                    HorizontalOptions="Center"/>
+                <Button Text="Add Point"
+                        Command="{Binding IncrementScoreCommand}"
+                        CommandParameter="1"/>
+                <Button Text="Remove Point"
+                        Command="{Binding DecrementScoreCommand}"
+                        CommandParameter="1"/>
+            </VerticalStackLayout>
+            <VerticalStackLayout>
+                <Label
+                    Text="{Binding PlayerTwoName}"
+                    FontSize="32" />
+                <Label
+                    Text="{Binding PlayerTwoScore}"
+                    FontSize="32"
+                    HorizontalOptions="Center"/>
+                <Button Text="Add Point"
+                        Command="{Binding IncrementScoreCommand}"
+                        CommandParameter="2"/>
+                <Button Text="Remove Point"
+                        Command="{Binding DecrementScoreCommand}"
+                        CommandParameter="2"/>
+            </VerticalStackLayout>
+        </HorizontalStackLayout>
+        <Image Source="Assets/ball 1.png">
+            <Image.GestureRecognizers>
+                <TapGestureRecognizer Tapped="OnTapGestureRecognizerTapped"
+                                      NumberOfTapsRequired="2" />
+            </Image.GestureRecognizers>
+        </Image>
+    </StackLayout>
+</ContentPage>
